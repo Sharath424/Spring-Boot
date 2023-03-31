@@ -110,10 +110,10 @@ The controller gets the request from the user, and based on the request controll
 
 **IOC Container** :
 
+The container gets its instructions on what objects to instantiate, configure, and assemble by reading the configuration metadata provided. The configuration metadata can be represented either by XML, Java annotations, or Java code. The following diagram represents a high-level view of how Spring works. The Spring IoC container makes use of Java POJO classes and configuration metadata to produce a fully configured and executable system or application.
 
-![Spring :MVC](/images/ioc-container.png)  
+![Spring :IOC-container](/images/ioc-container.png)  
 
-The Spring IOC Container by using java POJO classses and configuration metadata produces a fully configured and executable system or application.
 IoC container is responsible to instantiate, configure and assemble the objects. The IoC container gets informations from the XML file and works accordingly
 
 configured by loading the xml files or by detecting specific java annotations on configuration classes.
@@ -123,6 +123,11 @@ Two types of ioc continers:-
 * Bean factory
 * Application Context
 
+1. BeanFactory Container
+This is the simplest container providing the basic support for DI and is defined by the org.springframework.beans.factory.BeanFactory interface. The BeanFactory and related interfaces, such as BeanFactoryAware, InitializingBean, DisposableBean, are still present in Spring for the purpose of backward compatibility with a large number of third-party frameworks that integrate with Spring.
+
+2. ApplicationContext Container
+This container adds more enterprise-specific functionality such as the ability to resolve textual messages from a properties file and the ability to publish application events to interested event listeners. This container is defined by the org.springframework.context.ApplicationContext interface.
 
 **IOC Features** :
 
@@ -130,24 +135,105 @@ Two types of ioc continers:-
 * configures and assembles their dependencies 
 * manages their entire life cycle
 
-![Spring :MVC](/images/ioc-features.png)  
+![Spring :IOC-Features](/images/ioc-features.png)  
 
 ## Dependency Injection
 
 Dependency injection is a fundamental aspect of the Spring framework, through which the Spring container **injects** objects into other objects or **dependencies**. Simply put, this allows for loose coupling of components and moves responsibility for managing components onto the container.
 
 
-![Spring :MVC](/images/dependenc-injection.png)
+![Spring :Dependency-injection](/images/dependenc-injection.png)
 
 **Types Of Dependency Injection**
 
-  
-![Spring :MVC](/images/types-of-dependency.png)
+1. **Constructor Based Dependency Injection**
+
+Constructor-based DI is accomplished when the container invokes a class constructor with a number of arguments, each representing a dependency on the other class.
+
+We can inject the dependency by constructor. The <constructor-arg> subelement of <bean> is used for constructor injection. Here we are going to inject
+
+
+* primitive and String-based values
+* Dependent object (contained object)
+* Collection values etc.
+
+2. **Setter Based Dependency Injection**
+
+Setter-based DI is accomplished by the container calling setter methods on your beans after invoking a no-argument constructor or no-argument static factory method to instantiate your bean.
+
+We can inject the dependency by setter method also. The <property> subelement of <bean> is used for setter injection. Here we are going to inject
 
 
 
+* primitive and String-based values
+* Dependent object (contained object)
+* Collection values etc.
+
+![Spring :types-of-dependency](/images/types-of-dependency.png)
+
+## Bean
+
+Beans are the objects that from the backbone of the Application and are managed by the Spring Iox container.
+Spring Ioc Container instantiates,assembles and manages The bean Object
+The Configuration metadata that are supplied to the container are used to create the beans object.
+
+**bean life cycle**
+
+![Spring :bean-life-cycle](/images/bean-life-cycle.png)
+
+The life cycle of a Spring bean is easy to understand. When a bean is instantiated, it may be required to perform some initialization to get it into a usable state. Similarly, when the bean is no longer required and is removed from the container, some cleanup may be required.
+
+To define setup and teardown for a bean, we simply declare the <bean> with initmethod and/or destroy-method parameters. The init-method attribute specifies a method that is to be called on the bean immediately upon instantiation. Similarly, destroymethod specifies a method that is called just before a bean is removed from the container.
+
+**Bean Dependency Injection**:-
+It’s a design pattern which removes the dependency from the Programming code ,that makes the application easy to manage and test
+Dependency injection makes our Programming code loosely coupled, which means change in implementation does not affect the user or invoking application
+
+## Bean Scope
+
+![Spring :dispatcher](/images/bean-scope.png)
+
+| Sl.no    | scope    |
+| :------- | :------- |
+| 1        | singleton: This scopes the bean definition to a single instance per Spring IoC container (default).   |
+| 2        | prototype: This scopes a single bean definition to have any number of object instances.               |
+| 3        | request: This scopes a bean definition to an HTTP request. Only valid in the context of a web-aware Spring   ApplicationContext.  |
+| 4        | session: This scopes a bean definition to an HTTP session. Only valid in the context of a web-aware Spring ApplicationContext.   |
+| 5        | global-session: This scopes a bean definition to a global HTTP session. Only valid in the context of a web-aware Spring ApplicationContext.   |
+
+## Dispatcher Servlet
+
+![Spring :dispatcher](/images/dispatcher.png)
+
+**Servlet** : is an specification as part of jee ascepts . servlet are used to creating the dispatcher servlets.
+
+In Spring MVC all incoming requests go through a single servlet is called Dispatcher Servlet (front controller). The front controller is a design pattern in web application development. A single servlet receives all the request and transfers them to all other components of the application.
+
+The job of DispatcherServlet is to take an incoming URI and find the right combination of handlers (Controller classes) and views (usually JSPs). When the DispatcherServlet determines the view, it renders it as the response. Finally, the DispatcherServlet returns the Response Object to back to the client.
+
+
+![Spring :dispatcher](/images/dispatcher-servlet.png)
 
 
 
+# Spring Conditional Configuration 
+
+# Bootstrapping Spring boot project
+
+## What is spring boot?
+
+Spring Boot makes it easy to create stand-alone, production-grade Spring based applications that you can "just run".
+
+we take an opinionated view of the spring platform and third-party libraries so you can get started with minimum fuss. Most Spring Boot applications need very little Spring configuration
+
+Spring Boot enables developers to focus on the business logic behind their microservice.It aims to take care of all the nitty-gritty technical details involved in developing microservices.
+
+# Creating Web Project (Rest API)
+
+# Unit Testing
+
+# Adding Data JPA dependency
+
+# Configuring application
 
 
