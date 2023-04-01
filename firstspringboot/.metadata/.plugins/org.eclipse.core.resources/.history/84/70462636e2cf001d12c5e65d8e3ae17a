@@ -1,0 +1,26 @@
+package com.training.firstspringboot;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+//SpringBootApplication
+
+
+//Attempts to automatically configure your spring application based on the 
+//dependency added as part of starters/pom.xml
+//1. configuration web.xml beam.xml
+// 2. spring mvc
+// dependency,view resolves,component scan
+//3.hibernate/jpa
+//datasource
+//entity manger
+//transaction manager
+
+
+public class FirstspringbootApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(FirstspringbootApplication.class, args);
+	}
+
+}

@@ -1,0 +1,36 @@
+package com.training.firstspringboot;
+
+import java.util.Arrays;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+
+
+
+//Attempts to automatically configure your spring application based on the 
+//dependency added as part of starters/pom.xml
+//1. configuration web.xml beam.xml
+// 2. spring mvc
+// dependency,view resolves,component scan
+//3.hibernate/jpa
+//datasource
+//entity manger
+//transaction manager
+
+@SpringBootApplication
+public class FirstspringbootApplication {
+
+	public static void main(String[] args) {
+	ConfigurableApplicationContext applicationContext	=SpringApplication.run(FirstspringbootApplication.class, args);
+	SpringDemoComponent component = applicationContext.getBean(SpringDemoComponent.class);
+System.out.println(component.getMessage());
+
+String[] beanNames =applicationContext.getBeanDefinitionNames();
+Arrays.sort(beanNames);//optional
+for(String beanName: beanNames) {
+	System.out.println(beanName);
+}
+	}
+
+}

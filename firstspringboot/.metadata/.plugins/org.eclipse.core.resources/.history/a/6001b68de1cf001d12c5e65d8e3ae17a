@@ -1,0 +1,16 @@
+package com.training.firstspringboot;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+//SpringBootApplication
+
+
+//Attempts to automatically configure your spring application based on the dependency
+public class FirstspringbootApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(FirstspringbootApplication.class, args);
+	}
+
+}
